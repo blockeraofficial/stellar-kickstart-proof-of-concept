@@ -2,7 +2,7 @@ import { ReactComponent as PropertyFinder } from "./property-finder-icon.svg";
 import { ReactComponent as Remax } from "./remax-icon.svg";
 import { ReactComponent as Excalamation } from "./excalamation.svg";
 import { ReactComponent as ExcalamationDark } from "./exclamation-dark.svg";
-import { ReactComponent as OkaneConnection } from "./okane-connection.svg";
+import { ReactComponent as StellarConnection} from "./stellar-connection.svg";
 import { ReactComponent as HandBurger } from "./handburger.svg";
 import { ReactComponent as Verified } from "./verified.svg";
 import { ReactComponent as Twitter } from "./twitter.svg";
@@ -65,7 +65,7 @@ export {
   PropertyFinder,
   Remax,
   Excalamation,
-  OkaneConnection,
+  StellarConnection,
   HandBurger,
   Verified,
   Twitter,
@@ -124,3 +124,5 @@ export {
   WatchDemoVideo,
   MoreInfo
 };
+
+

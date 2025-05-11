@@ -1,10 +1,52 @@
+import { useState, useEffect } from 'react';
+import {
+  StellarWalletsKit,
+  WalletNetwork,
+  FREIGHTER_ID,
+  FreighterModule,
+} from '@creit.tech/stellar-wallets-kit';
 import { NavLink } from "react-router-dom";
-import { rocPurpleLogo } from "assets/images";
-import { OkaneConnection, Excalamation, HandBurger } from "assets/svgs";
-import { useWeb3 } from "hooks";
+import FetchAssets from 'modules/dashboard/FetchAssets';
+import { Excalamation, HandBurger, StellarConnection } from "assets/svgs";
+import { rocPurpleLogo } from 'assets/images';
 
 const Navbar = ({ toggle }) => {
-  const { isConnected, address, open } = useWeb3();
+
+  const [connectedWalletPublicKey, setConnectedWalletPublicKey] = useState(null);
+
+  const kit = new StellarWalletsKit({
+    network: WalletNetwork.TESTNET,
+    selectedWalletId: FREIGHTER_ID,
+    modules: [new FreighterModule()],
+  });
+
+  const connectWallet = async () => {
+    await kit.openModal({
+      onWalletSelected: async (option) => {
+        kit.setWallet(option.id);
+        const { address } = await kit.getAddress();
+        setConnectedWalletPublicKey(address);
+      }
+    });
+  };
+  
+  useEffect(() => {
+    const fetchConnectedWallet = async () => {
+      try {
+        const { address } = await kit.getAddress();
+        if (address) {
+          setConnectedWalletPublicKey(address);
+        }
+      } catch (error) {
+        // Wallet not connected yet
+      }
+    };
+
+    fetchConnectedWallet();
+  }, []);
+
+  const abbreviate = (addr) => `${addr.slice(0, 3)}...${addr.slice(-5)}`;
+  
 
   return (
     <div className="bg-white w-full rounded-full flex items-center justify-between p-2">
@@ -18,22 +60,17 @@ const Navbar = ({ toggle }) => {
         <img src={rocPurpleLogo} alt="website-logo" className="h-11" />
       </NavLink>
       <div className="space-x-2 flex items-center">
-        {isConnected ? (
-          <div className="bg-rocPurple-300 px-1 lg:px-2 py-1 rounded-full cursor-pointer">
-            <div
-              className="flex items-center space-x-2"
-              onClick={() => open({ view: "Account" })}
-            >
-              <p className="text- bg-white rounded-full px-4 font-manrope">
-                {address.slice(0, 3) + "..." + address.slice(-5)}
-              </p>
-              <OkaneConnection />
-            </div>
+        {connectedWalletPublicKey ? (
+          <div className="flex items-center space-x-2 bg-rocPurple-300 px-1 lg:px-2 py-1 rounded-full cursor-pointer">
+            <p className="bg-white text-black text-[16px] rounded-full px-4 font-manrope">
+              {abbreviate(connectedWalletPublicKey)}
+            </p>
+            <StellarConnection />
           </div>
         ) : (
           <button
             className="bg-rocPurple-300 px-4 lg:px-4 py-1 rounded-full text-rocWhite-900 font-manrope border border-[#1a54da] hover:bg-rocWhite-900 hover:text-rocBlack-100"
-            onClick={() => open()}
+            onClick={connectWallet}
           >
             Connect
           </button>
