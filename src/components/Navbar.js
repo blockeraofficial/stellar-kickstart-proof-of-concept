@@ -6,11 +6,10 @@ import {
   FreighterModule,
 } from '@creit.tech/stellar-wallets-kit';
 import { NavLink } from "react-router-dom";
-import FetchAssets from 'modules/dashboard/FetchAssets';
 import { Excalamation, HandBurger, StellarConnection } from "assets/svgs";
 import { rocPurpleLogo } from 'assets/images';
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({toggle}) => {
 
   const [connectedWalletPublicKey, setConnectedWalletPublicKey] = useState(null);
 
@@ -36,6 +35,7 @@ const Navbar = ({ toggle }) => {
         const { address } = await kit.getAddress();
         if (address) {
           setConnectedWalletPublicKey(address);
+          
         }
       } catch (error) {
         // Wallet not connected yet

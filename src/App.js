@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { Routes, Route, HashRouter } from "react-router-dom";
 
@@ -19,12 +19,24 @@ import TermsOfService from "pages/TermsAndService";
 import "wallet-connect-config";
 
 const App = () => {
+
+  const [walletInfo, setWalletInfo] = useState({
+    publicKey: null,
+    kit: null,
+  });
+
   return (
     <HashRouter>
-      <HomeLayout>
+      <HomeLayout onConnect={setWalletInfo}>
         <Routes>
-          <Route path="/" element={<MarketPlacePage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/" element={<MarketPlacePage/>} />
+          <Route path="/dashboard" element=
+            {
+              <DashboardPage
+                publicKey={walletInfo.publicKey}
+              />
+            } 
+          />
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/staking" element={<StakingPage />} />
           <Route path="/oracles" element={<OraclesPage />} />
@@ -40,5 +52,7 @@ const App = () => {
     </HashRouter>
   );
 };
+
+
 
 export default App;
