@@ -1,11 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sidebar, Navbar, Footer } from "components";
+import {
+  StellarWalletsKit,
+  WalletNetwork,
+  FREIGHTER_ID,
+  FreighterModule,
+} from '@creit.tech/stellar-wallets-kit';
 import Cookies from "./Cookies";
 
-const HomeLayout = ({ children }) => {
+const HomeLayout = ({ children, onConnect }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleSidebar = () => setOpen(!isOpen);
   const onCloseSidebar = () => setOpen(false);
+
+  
+  const [connectedWalletPublicKey, setConnectedWalletPublicKey] = useState(null);
+  
+    const kit = new StellarWalletsKit({
+      network: WalletNetwork.TESTNET,
+      selectedWalletId: FREIGHTER_ID,
+      modules: [new FreighterModule()],
+    });
+  
+    const connectWallet = async () => {
+      await kit.openModal({
+        onWalletSelected: async (option) => {
+          kit.setWallet(option.id);
+          const { address } = await kit.getAddress();
+          setConnectedWalletPublicKey(address);
+          onConnect({ publicKey: address, kit });
+        }
+      });
+    };
+    
+    useEffect(() => {
+      const fetchConnectedWallet = async () => {
+        try {
+          const { address } = await kit.getAddress();
+          if (address) {
+            setConnectedWalletPublicKey(address);
+            onConnect({ publicKey: address, kit });
+          }
+        } catch (error) {
+          // Wallet not connected yet
+        }
+      };
+  
+      fetchConnectedWallet();
+    }, []);
 
   return (
     <div className="m-2 md:m-4 flex space-x-0 md:space-x-3 font-manrope">
