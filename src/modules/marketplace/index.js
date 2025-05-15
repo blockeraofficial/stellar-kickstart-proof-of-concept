@@ -12,6 +12,9 @@ import EventsCard from "./EventsCard";
 import OraclesCard from "./OraclesCard";
 import Documents from "./Documents";
 import VideoPreview from "./VideoPreview";
+//Stellar
+import FetchStellarContractAssets from "./FetchStellarContractAssets";
+//Stellar
 
 export {
   MarketCard,
@@ -28,4 +31,7 @@ export {
   EventsCard,
   Documents,
   VideoPreview,
+  //Stellar
+  FetchStellarContractAssets
+  //Stellar
 };

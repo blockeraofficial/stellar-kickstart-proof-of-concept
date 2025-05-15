@@ -3,6 +3,7 @@ import { ReactComponent as Remax } from "./remax-icon.svg";
 import { ReactComponent as Excalamation } from "./excalamation.svg";
 import { ReactComponent as ExcalamationDark } from "./exclamation-dark.svg";
 import { ReactComponent as StellarConnection} from "./stellar-connection.svg";
+import { ReactComponent as PropertyXLM} from "./x1.svg";
 import { ReactComponent as HandBurger } from "./handburger.svg";
 import { ReactComponent as Verified } from "./verified.svg";
 import { ReactComponent as Twitter } from "./twitter.svg";
@@ -66,6 +67,7 @@ export {
   Remax,
   Excalamation,
   StellarConnection,
+  PropertyXLM,
   HandBurger,
   Verified,
   Twitter,

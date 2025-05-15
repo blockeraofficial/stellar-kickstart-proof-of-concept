@@ -79,8 +79,10 @@ return (
               <StatisticCard title={"TESTNET ROC BALANCE"} value={`${0}`} />
             </div>
             <Properties accountNfts={tokenizedAssets} />
+            {/*
             <Earnings />
             <Transactions />
+            */}
           </div>
       </div>
 

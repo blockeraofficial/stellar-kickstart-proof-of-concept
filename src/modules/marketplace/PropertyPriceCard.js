@@ -1,4 +1,4 @@
-import { PropertyDollar, PropertyPrice, Question } from "assets/svgs";
+import { PropertyDollar, PropertyXLM, PropertyPrice, Question } from "assets/svgs";
 
 const PropertyPriceCard = ({ price, irr, apr, collected }) => {
   return (
@@ -9,10 +9,10 @@ const PropertyPriceCard = ({ price, irr, apr, collected }) => {
       </div>
       <div className="space-y-4">
         <div className="flex space-x-2 items-center justify-between">
-          <h6 className="text-4xl font-bold text-rocGreen-800">
-            {`${price || 0}`}
+          <h6 className="text-4xl font-bold text-rocBlue-100">
+            {`${(price || 0).toLocaleString()}`}
           </h6>
-          <PropertyDollar />
+          <PropertyXLM />
         </div>
         <div className="flex space-x-2 items-center justify-between">
           <div className="flex space-x-2 items-center">

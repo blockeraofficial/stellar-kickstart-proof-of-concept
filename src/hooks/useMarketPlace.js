@@ -1,46 +1,53 @@
 import { useEffect, useState } from "react";
 import { updateProperties } from "constants/properties.js";
 import { getProperties } from "api/index.js";
+// Stellar
+import { FetchStellarContractAssets } from "modules/marketplace";
+// Stellar
+
+const API_STELLAR_EXPERT = process.env.REACT_APP_API_STELLAR_EXPERT
 
 const useMarketPlace = () => {
-  const [marketPlaceNfts, setMarketPlaceNfts] = useState([]);
-  const [highlightedMarketplace, setHighlightedMarketplace] = useState([]);
-  const [nfts, setNfts] = useState([]);
+  const [marketPlaceAssets, setMarketPlaceAssets] = useState([]);
+  const [highlightedMarketplaceAssets, setHighlightedMarketplaceAssets] = useState([]);
+  const [stellarContractAllAssets, setStellarContractAllAssets] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isError, setErrorFetching] = useState(false);
 
-  const fetchNTFs = async () => {
+  const FetchStellarContractAllAssets = async () => {
     setLoading(true);
     try {
-      const properties = await getProperties();
-      const nfts = properties?.result?.nfts?.map((item, index) => ({
+      // Stellar
+      const stellarContractAssetsFetched = await FetchStellarContractAssets(API_STELLAR_EXPERT)
+      // Stellar
+
+      const stellarContractAllTokens = stellarContractAssetsFetched?.map((item, index) => ({
         ...item,
         type: "OPEN",
         location: "Dubai",
-        ...updateProperties(
-          parseInt(item?.tokenId),
-          item?.media && item?.media[0]?.gateway
-        ),
+        media: "",
         collected: (
-          (item?.rawMetadata?.tokensSold / item?.rawMetadata?.totalTokens) *
-          100
-        ).toFixed(2),
-        price: item?.rawMetadata?.totalTokens * 10,
+          (1000 - (item?.balance / 10000000))
+        ) / 100,
+        price: 1000000
       }));
 
-      setMarketPlaceNfts(nfts.slice(1));
-      setHighlightedMarketplace(nfts[0]);
-      setNfts(nfts);
+      const stellarContractAllAssets = stellarContractAllTokens.filter(item => item.asset !== "XLM");
+
+      setMarketPlaceAssets(stellarContractAllAssets.slice(1))         // Everything except the highligted asset
+      setHighlightedMarketplaceAssets(stellarContractAllAssets[0]);   // Highligted asset
+      setStellarContractAllAssets(stellarContractAllAssets);          // All Assets
+
       const dataToStore = {
-        nfts: nfts.slice(1),
-        highlightedMarketplace: nfts[0],
-        allNts: nfts,
+        marketplaceAssets: stellarContractAllAssets.slice(1),
+        highlightedMarketplaceAssets: stellarContractAllAssets[0],
+        stellarContractAllAssets: stellarContractAllAssets,
       };
 
       const currentTime = new Date().getTime();
       sessionStorage.setItem("marketPlaceData", JSON.stringify(dataToStore));
       sessionStorage.setItem("marketPlaceTimestamp", currentTime.toString());
-
+      
       setLoading(false);
     } catch (error) {
       console.log("error", error);
@@ -59,15 +66,15 @@ const useMarketPlace = () => {
       currentTime - parseInt(storedTimestamp) < 600000
     ) {
       const parsedData = JSON.parse(storedData);
-      setMarketPlaceNfts(parsedData.nfts);
-      setNfts(parsedData.allNts);
-      setHighlightedMarketplace(parsedData.highlightedMarketplace);
+      setMarketPlaceAssets(parsedData.marketplaceAssets);
+      setHighlightedMarketplaceAssets(parsedData.highlightedMarketplaceAssets);
+      setStellarContractAllAssets(parsedData.stellarContractAllAssets);
     } else {
-      fetchNTFs();
+      FetchStellarContractAllAssets();
     }
   }, []);
 
-  return { nfts, marketPlaceNfts, highlightedMarketplace, loading, isError };
+  return { loading, isError, marketPlaceAssets, highlightedMarketplaceAssets, stellarContractAllAssets };
 };
 
 export { useMarketPlace };
