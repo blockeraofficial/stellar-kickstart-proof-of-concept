@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// BACKEND CALLS
+
 const API = axios.create({
   // baseURL: "http://localhost:4000/api",
   baseURL: "https://realty-on-chain-backend.onrender.com/api",

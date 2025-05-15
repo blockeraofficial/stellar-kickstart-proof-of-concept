@@ -5,7 +5,9 @@ const Properties = ({ accountNfts }) => {
   
   // Necessary step to add front-end features on the tokens
 
-  const enrichedAssets = accountNfts.map((item) => {
+  // For POC, keep 1 tokenized assets
+
+  const enrichedAssets = accountNfts.slice(0,1).map((item) => {
     if (item.asset_code === "T001") {
       return {
         ...item,
@@ -14,15 +16,16 @@ const Properties = ({ accountNfts }) => {
         asset_image_link: "https://ipfs.io/ipfs/QmYCPbygejfB9DoACcJVCiHB8LtzxYGJTSvPnVTkkA6bV8",
         total_assets_available: "1000",
       };
-    } else if (item.asset_code === "T002") {
-      return {
-        ...item,
-        asset_name: "Aykon City Tower B",
-        asset_location: "Dubai",
-        asset_image_link: "https://ipfs.io/ipfs/QmS8sW4sH1wMqkfPZHHMoFni4BKu82e5riVibQh6JB5GZB",
-        total_assets_available: "2000",
-      };
-    } else {
+    } // else if (item.asset_code === "T002") {
+      // return {
+      //   ...item,
+      //   asset_name: "Aykon City Tower B",
+      //   asset_location: "Dubai",
+      //   asset_image_link: "https://ipfs.io/ipfs/QmS8sW4sH1wMqkfPZHHMoFni4BKu82e5riVibQh6JB5GZB",
+      //   total_assets_available: "2000",
+      // };
+    // } 
+    else  {
       return item; 
     }
   });
@@ -74,7 +77,7 @@ const Properties = ({ accountNfts }) => {
                 >
                   <h6 className="w-3/12 h-20 relative">
                     <img
-                      src="https://en.idei.club/uploads/posts/2023-03/1678942656_en-idei-club-p-modern-house-interior-dizain-3.jpg"
+                      src={`${item.asset_image_link}`}
                       className="w-full h-full rounded-l-2xl object-cover"
                       alt="house"
                     />
