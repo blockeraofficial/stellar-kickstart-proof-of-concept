@@ -14,6 +14,8 @@ import Documents from "./Documents";
 import VideoPreview from "./VideoPreview";
 //Stellar
 import FetchStellarContractAssets from "./FetchStellarContractAssets";
+import EstablishTrustline from "./EstablishTrustline";
+import BuyRealtyToken from "./BuyRealtyToken";
 //Stellar
 
 export {
@@ -32,6 +34,8 @@ export {
   Documents,
   VideoPreview,
   //Stellar
-  FetchStellarContractAssets
+  FetchStellarContractAssets,
+  EstablishTrustline,
+  BuyRealtyToken
   //Stellar
 };

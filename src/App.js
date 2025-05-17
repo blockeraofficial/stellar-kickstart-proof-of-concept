@@ -44,7 +44,14 @@ const App = () => {
           <Route path="/model" element={<ModelPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/auction" element={<AuctionPage />} />
-          <Route path="/property/:id" element={<MarketPlaceDetailPage />} />
+          <Route path="/property/:id" element=
+            {
+              <MarketPlaceDetailPage
+                publicKey={walletInfo.publicKey}
+                kit={walletInfo.kit}
+              />
+            } 
+          />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
         </Routes>

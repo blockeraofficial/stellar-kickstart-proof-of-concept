@@ -28,6 +28,7 @@ const LINKS1 = [
     href: "/dashboard",
     SVG: () => <Dashboard />,
   },
+  /*
   {
     id: 3,
     title: "Auction",
@@ -52,6 +53,7 @@ const LINKS1 = [
     href: "/oracles",
     SVG: () => <Oracles />,
   },
+  */
 ];
 
 const LINKS2 = [
