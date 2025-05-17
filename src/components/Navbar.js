@@ -1,52 +1,10 @@
-import { useState, useEffect } from 'react';
-import {
-  StellarWalletsKit,
-  WalletNetwork,
-  FREIGHTER_ID,
-  FreighterModule,
-} from '@creit.tech/stellar-wallets-kit';
 import { NavLink } from "react-router-dom";
 import { Excalamation, HandBurger, StellarConnection } from "assets/svgs";
 import { rocPurpleLogo } from 'assets/images';
 
-const Navbar = ({toggle}) => {
-
-  const [connectedWalletPublicKey, setConnectedWalletPublicKey] = useState(null);
-
-  const kit = new StellarWalletsKit({
-    network: WalletNetwork.TESTNET,
-    selectedWalletId: FREIGHTER_ID,
-    modules: [new FreighterModule()],
-  });
-
-  const connectWallet = async () => {
-    await kit.openModal({
-      onWalletSelected: async (option) => {
-        kit.setWallet(option.id);
-        const { address } = await kit.getAddress();
-        setConnectedWalletPublicKey(address);
-      }
-    });
-  };
+const Navbar = ({toggle, connectWallet, connectedWalletPublicKey}) => {
   
-  useEffect(() => {
-    const fetchConnectedWallet = async () => {
-      try {
-        const { address } = await kit.getAddress();
-        if (address) {
-          setConnectedWalletPublicKey(address);
-          
-        }
-      } catch (error) {
-        // Wallet not connected yet
-      }
-    };
-
-    fetchConnectedWallet();
-  }, []);
-
   const abbreviate = (addr) => `${addr.slice(0, 3)}...${addr.slice(-5)}`;
-  
 
   return (
     <div className="bg-white w-full rounded-full flex items-center justify-between p-2">

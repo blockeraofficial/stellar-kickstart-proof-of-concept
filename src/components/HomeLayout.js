@@ -57,7 +57,11 @@ const HomeLayout = ({ children, onConnect }) => {
         onClose={onCloseSidebar}
       />
       <div className="flex flex-col space-y-2 w-full min-h-[calc(100vh_-_1rem)] md:min-h-[calc(100vh_-_2rem)]">
-        <Navbar toggle={toggleSidebar} />
+        <Navbar
+          toggle={toggleSidebar}
+          connectWallet={connectWallet}
+          connectedWalletPublicKey={connectedWalletPublicKey}
+        />
         <div className="flex-1 mx-auto p-4 w-full lg:max-w-[1300px]">
           {children}
         </div>
