@@ -70,10 +70,10 @@ const Footer = () => {
     <div className="bg-rocBlack-200 w-full rounded-3xl md:rounded-full py-4 px-10 space-y-2">
       <div className="flex flex-col md:flex-row justify-end items-center md:justify-between">
         <h6 className="hidden md:block text-rocWhite-900 text-md font-bold">
-          {`© 2024 Powered by Blockera Corp. All rights reserved.`}
+          {`© 2025 Powered by Blockera Corp. All rights reserved.`}
         </h6>
         <h6 className="block md:hidden text-rocWhite-900 text-sm text-center font-manrope">
-          {`© 2024 Powered by Blockera Corp.`}
+          {`© 2025 Powered by Blockera Corp.`}
         </h6>
         <h6 className="block md:hidden text-rocWhite-900 text-sm text-center font-manrope">
           All rights reserved.

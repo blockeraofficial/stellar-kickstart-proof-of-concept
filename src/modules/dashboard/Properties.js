@@ -11,9 +11,9 @@ const Properties = ({ accountNfts }) => {
     if (item.asset_code === "T001") {
       return {
         ...item,
-        asset_name: "Avanti Apartment 1",
+        asset_name: "Cavalli Apartment",
         asset_location: "Dubai",
-        asset_image_link: "https://ipfs.io/ipfs/QmYCPbygejfB9DoACcJVCiHB8LtzxYGJTSvPnVTkkA6bV8",
+        asset_image_link: "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
         total_assets_available: "1000",
       };
     } // else if (item.asset_code === "T002") {

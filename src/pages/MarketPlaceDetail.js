@@ -1,27 +1,25 @@
-import { ethers } from "ethers";
-import { Desktop } from "assets/svgs";
 import { Bedroom, Bathroom, YearBuilt, Area } from "assets/svgs/property";
 import { LoadingContainer, Title } from "components";
-import { useMarketPlace, useWeb3 } from "hooks";
+import { useMarketPlace } from "hooks";
 import {
   Slider,
-  Map,
-  Financials,
   SaleTimer,
   PropertyPriceCard,
   BuyPropertyCard,
-  OraclesCard,
-  EventsCard,
   Documents,
-  VideoPreview,
 } from "modules/marketplace";
 import { useParams } from "react-router-dom";
-import { okaneContractCredentials } from "../constants/OkaneContractCredentials";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DamacLogo } from "assets/images";
 
-const imageURL1 =
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlfGVufDB8fDB8fHww";
+const imageURL1 = 
+  [
+    "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
+    "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
+    "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
+    "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg"
+    
+  ]
 
 const MarketPlaceDetailPage = ({publicKey, kit}) => {
   const [isLoading, setLoading] = useState(false);
@@ -105,7 +103,7 @@ const MarketPlaceDetailPage = ({publicKey, kit}) => {
           </div>
           {/* For Mobile Part*/}
           <div className="block lg:hidden space-y-4">
-            <SaleTimer variant="secondary" />
+            <SaleTimer />
             <PropertyPriceCard
               apr={15}
               price={currentAsset?.price | 1000000}
@@ -119,11 +117,12 @@ const MarketPlaceDetailPage = ({publicKey, kit}) => {
               publicKey={publicKey}
               kit={kit}
             />
+            <Documents />
           </div>
         </div>
         {/* For Desktop Part*/}
         <div className="hidden lg:block h-full w-full  lg:w-[32%] space-y-6">
-          <SaleTimer variant="secondary" />
+          <SaleTimer />
           <PropertyPriceCard
             apr={15}
             price={currentAsset?.price | 1000000}
@@ -137,6 +136,7 @@ const MarketPlaceDetailPage = ({publicKey, kit}) => {
             publicKey={publicKey}
             kit={kit}
           />
+          <Documents />
         </div>
       </div>
     </LoadingContainer>

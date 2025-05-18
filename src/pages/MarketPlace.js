@@ -14,13 +14,6 @@ const MarketplacePage = () => {
   const onChangeFilter = (filter) => setFilter(filter);
   const navigator = useNavigate();
 
-  //Stellar
-  console.log("Marketplace Assets:", marketPlaceAssets)
-  console.log("Highligted Marketplace Assets:", highlightedMarketplaceAssets)
-  console.log("All Assets:", stellarContractAllAssets)
-
-  console.log("RATIO", highlightedMarketplaceAssets.collected);
-
   return (
     <LoadingContainer
       isLoading={loading}
@@ -37,14 +30,15 @@ const MarketplacePage = () => {
               onClick={() =>
                 navigator(`/property/1`)
               }
-              title={"Avanti Apartment"}
+              title={"Cavalli Apartment"}
               location={highlightedMarketplaceAssets?.location}
               images={
                 [
-                  "https://ipfs.io/ipfs/bafybeieso4siydltys6arekaevn6vya7abxqdutpzp6setbg3izhk6d3d4/",
-                  "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg",
-                  "https://manage.tanamiproperties.com/Gallery/723/Thumb/2385.jpg",
-                  "https://manage.tanamiproperties.com/Gallery/723/Thumb/2384.jpg"
+                  "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
+                  "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
+                  "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
+                  "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg"
+                  
                 ]
               }
               type={highlightedMarketplaceAssets?.type}
