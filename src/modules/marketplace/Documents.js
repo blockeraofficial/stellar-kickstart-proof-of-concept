@@ -1,16 +1,12 @@
-import { Browser } from "assets/svgs";
 import { Title } from "components";
+
+const ASSET_CONTRACT_ADDRESS = process.env.REACT_APP_ASSET_CONTRACT_ADDRESS;
 
 const documents = [
   {
     id: 1,
-    name: "DAO LLC",
-    url: "https://sos.wyo.gov/business/startabusiness.aspx",
-  },
-  {
-    id: 2,
-    name: "Smart Contract",
-    url: "https://sepolia.etherscan.io/address/0x9a10cA8bb91B9d3696A07f3AF948A750F4e5B390",
+    name: "Stellar Asset Contract",
+    url: `https://stellar.expert/explorer/testnet/contract/${ASSET_CONTRACT_ADDRESS}`,
   },
 ];
 

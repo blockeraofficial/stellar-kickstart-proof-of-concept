@@ -5,7 +5,7 @@ import {
   StatisticCard,
   Title,
 } from "components";
-import { Properties, Transactions, Earnings } from "modules/dashboard";
+import { Properties } from "modules/dashboard";
 import { Verified } from "assets/svgs";
 import FetchAssets from "modules/dashboard/FetchAssets";
 

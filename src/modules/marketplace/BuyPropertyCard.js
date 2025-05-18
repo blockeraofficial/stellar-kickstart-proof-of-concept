@@ -73,10 +73,22 @@ const BuyPropertyCard = ({
       <div className="rounded-t-xl w-full h-12 bg-rocPurple-800 flex space-x-2 items-center justify-center">
         <DollarStatusIcon />
         <h6 className="font-bold font-manrope text-2xl text-rocWhite-900">
-          Buy Property
+          Buy
         </h6>
       </div>
-      <div className="p-4 flex flex-col space-y-6 mb-2">
+      <div className="p-5 flex flex-col space-y-6 mb-2">
+        <div className="w-full border-2 border-rocPurple-800 rounded-full relative flex justify-center h-[80px]">
+          <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-full flex space-x-2 items-center px-3 py-1 bg-gray-100 text-rocPurple-800">
+            <h6 className="text-lg font-bold whitespace-nowrap font-manrope">
+              Token Price
+            </h6>
+          </div>
+          <div className="w-1/2 flex justify-center items-center">
+            <h6 className="text-rocBlue-100 font-bold text-xl whitespace-nowrap">
+              1,000 Test XLM
+            </h6>
+          </div>
+        </div>
         <div className="flex justify-center">
           <div className="relative rounded-xl overflow-hidden w-full md:max-w-[880px]">
             <input
@@ -101,7 +113,7 @@ const BuyPropertyCard = ({
                   : "border-rocPurple-300 text-rocPurple-300"
               } focus:outline-none focus:border-rocPurple-300 font-manrope`}
               placeholder={
-                !trustlineStatus.isTrusted ? "Build trustline first" : "REALTY TOKEN"
+                !trustlineStatus.isTrusted ? "Build trustline first" : "ENTER TOKEN AMOUNT"
               }
             />
           </div>
@@ -141,19 +153,6 @@ const BuyPropertyCard = ({
               </button>
             </>
           )}
-        </div>
-
-        <div className="w-full border-2 border-rocPurple-800 rounded-full relative flex justify-center h-[80px]">
-          <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-full flex space-x-2 items-center px-3 py-1 bg-rocWhite-900 text-rocPurple-800">
-            <h6 className="text-lg font-bold whitespace-nowrap font-manrope">
-              Realty Token Price
-            </h6>
-          </div>
-          <div className="w-1/2 flex justify-center items-center">
-            <h6 className="text-rocBlue-100 font-bold text-xl whitespace-nowrap">
-              1,000 Test XLM
-            </h6>
-          </div>
         </div>
       </div>
     </div>

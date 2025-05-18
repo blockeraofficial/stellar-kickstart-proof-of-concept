@@ -28,9 +28,9 @@ const useMarketPlace = () => {
         location: "Dubai",
         media: "",
         collected: (
-          (1000 - (item?.balance / 10000000))
-        ) / 100,
-        price: 1000000,
+          ((1000 * Math.pow(10,7) - item?.balance ) / Math.pow(10,8))
+        ),
+        price: Math.pow(10,6),
       }));
 
       let stellarContractAllAssets = stellarContractAllTokens.filter(item => item.asset !== "XLM");
@@ -40,15 +40,16 @@ const useMarketPlace = () => {
         if (item.asset.startsWith("T001")) {
           return {
             ...item,
-            name: "Avanti Apartment 1",
+            name: "Cavalli Apartment",
             location: "Dubai",
             images:
-            [
-              "https://ipfs.io/ipfs/bafybeieso4siydltys6arekaevn6vya7abxqdutpzp6setbg3izhk6d3d4/",
-              "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg",
-              "https://manage.tanamiproperties.com/Gallery/723/Thumb/2385.jpg",
-              "https://manage.tanamiproperties.com/Gallery/723/Thumb/2384.jpg"
-            ],
+              [
+                "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
+                "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
+                "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
+                "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg"
+                
+              ],
             total_assets_available: "1000",
             bedrooms: 1,
             bathrooms: 1,
