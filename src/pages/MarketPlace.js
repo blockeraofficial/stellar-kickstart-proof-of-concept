@@ -38,7 +38,6 @@ const MarketplacePage = () => {
                   "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
                   "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
                   "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg"
-                  
                 ]
               }
               type={highlightedMarketplaceAssets?.type}

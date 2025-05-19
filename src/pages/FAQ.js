@@ -44,13 +44,13 @@ const GENERAL_TAGS = [
 const FAQs = [
   {
     id: 1,
-    question: "How can I buy real estate tokens step by step?",
-    answer: "First you need to buy USDT, then you need to verify yourself via our platform, then you need to approve your USDT via clicking the approve button and lastly you can buy real estate tokens with respect to approved amount",
+    question: "How can I buy real estate tokens step by step to participate beta testing?",
+    answer: "You need to acquire a web3 wallet compatible with Stellar Testnet and acquire testnet XLM's",
   },
   {
     id: 2,
     question: "Will I be the legal shareholder of the property after I buy real estate tokens?",
-    answer: "After all the required USDT accumulated in the platform, we will buy the property from the owner and you will be the legal shareholder",
+    answer: "After all the required money accumulated in the platform, we will buy the property from the owner and you will be the legal shareholder",
   },
   {
     id: 3,
@@ -60,7 +60,7 @@ const FAQs = [
   {
     id: 4,
     question: "What are the available paying options currently?",
-    answer: "Currently we accept only USDT",
+    answer: "Currently we accept only Testnet XLM",
   },
   {
     id: 5,
@@ -94,18 +94,18 @@ const FAQs = [
   },
   {
     id: 11,
-    question: "Can I see my property token on Opensea or any other platform that shows NFTs or SFTs?",
-    answer: "After you bought real estate tokens yes you can!",
+    question: "Can I see purchased property tokens?",
+    answer: "You can look at Dashboard section for your connected account",
   },
   {
     id: 12,
-    question: "How do you tokenize properties with ERC-1155?",
-    answer: "We divide the real value of real estate properties to 10 and we set the price of each token to 10 USDT",
+    question: "How do you tokenize properties?",
+    answer: "We tokenize assets using Stellar Asset Standard",
   },
   {
     id: 13,
     question: "Is there a maximum amount I can invest in a property",
-    answer: "Yes. It is calculated as the real value of real estate in terms of USDT divided by 10. So each property has a maximum value of tokens that can be bought",
+    answer: "Yes. It is calculated as the real value of real estate in terms of Testnet XLM divided by 10. So each property has a maximum value of tokens that can be bought",
   },
   {
     id: 14,
@@ -115,7 +115,7 @@ const FAQs = [
   {
     id: 15,
     question: "Do I need to invest in cryptocurrency?",
-    answer: "You need to buy cryptocurrency to your web3 wallet to be able to buy property tokens",
+    answer: "You need to acquire Testnet XLM to your web3 wallet to be able to buy property tokens",
   },
   {
     id: 16,
@@ -124,7 +124,7 @@ const FAQs = [
   },
   {
     id: 17,
-    question: "Which documents are needed to verify myself?",
+    question: "Which documents are needed to pass KYC?",
     answer: "Your id document/passport/driver license that shows your signature",
   },
 ];
