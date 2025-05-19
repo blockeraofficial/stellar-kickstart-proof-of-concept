@@ -4,11 +4,19 @@ import { LoadingContainer } from "components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMarketPlace } from "hooks";
+import { DamacCavalli1, DamacCavalli2, DamacCavalli3, DamacCavalli4 } from "assets/images";
 
 const { Title } = require("components");
 
+/* Damac Cavalli 1 (First Asset) Picture Links
+  "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
+  "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
+  "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
+  "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg"
+*/
+
 const MarketplacePage = () => {
-  const { loading, isError, marketPlaceAssets, highlightedMarketplaceAssets, stellarContractAllAssets } =
+  const { loading, isError, highlightedMarketplaceAssets } =
     useMarketPlace();
   const [filter, setFilter] = useState("all");
   const onChangeFilter = (filter) => setFilter(filter);
@@ -30,14 +38,14 @@ const MarketplacePage = () => {
               onClick={() =>
                 navigator(`/property/1`)
               }
-              title={"Cavalli Apartment"}
+              title={"Cavalli Apartment 1"}
               location={highlightedMarketplaceAssets?.location}
               images={
                 [
-                  "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
-                  "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
-                  "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
-                  "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg"
+                  DamacCavalli1,
+                  DamacCavalli2,
+                  DamacCavalli3,
+                  DamacCavalli4
                 ]
               }
               type={highlightedMarketplaceAssets?.type}

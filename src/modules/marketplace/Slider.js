@@ -8,22 +8,19 @@ const Slider = ({ images, location, title, type, onClick }) => {
   const onLeftClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (active === 0) {
-      setActive(images.length - 1);
-    } else {
-      setActive(active - 1);
-    }
+    setActive(active === 0 ? images.length - 1 : active - 1);
   };
+
   const onRightClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (active === images.length - 1) {
-      setActive(0);
-    } else {
-      setActive(active + 1);
-    }
+    setActive(active === images.length - 1 ? 0 : active + 1);
   };
-  const onImageClick = (index) => setActive(index);
+
+  const onImageClick = (e, index) => {
+    e.stopPropagation();
+    setActive(index);
+  };
 
   return (
     <div
@@ -54,19 +51,17 @@ const Slider = ({ images, location, title, type, onClick }) => {
           />
           <div className="flex space-x-2 justify-center bg-rocPurple-800 bg-opacity-80 rounded-b-2xl md:rounded-full px-3 py-2 w-full md:w-auto">
             {(images?.length > 6 ? images?.slice(0, 6) : images).map(
-              (item, index) => {
-                return (
-                  <img
-                    key={index}
-                    src={item}
-                    alt={`banner`}
-                    className={`select-none w-10 h-10 md:w-16 md:h-16 rounded-full shadow-md object-cover cursor-pointer ${
-                      index === active && "border-2 border-rocPurple-300"
-                    }`}
-                    onClick={() => onImageClick(index)}
-                  />
-                );
-              }
+              (item, index) => (
+                <img
+                  key={index}
+                  src={item}
+                  alt={`banner`}
+                  className={`select-none w-10 h-10 md:w-16 md:h-16 rounded-full shadow-md object-cover cursor-pointer ${
+                    index === active && "border-2 border-rocPurple-300"
+                  }`}
+                  onClick={(e) => onImageClick(e, index)}
+                />
+              )
             )}
           </div>
           <RightArrow
@@ -78,5 +73,6 @@ const Slider = ({ images, location, title, type, onClick }) => {
     </div>
   );
 };
+
 
 export default Slider;
