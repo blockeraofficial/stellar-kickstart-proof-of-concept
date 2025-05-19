@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { updateProperties } from "constants/properties.js";
-import { getProperties } from "api/index.js";
 // Stellar
 import { FetchStellarContractAssets } from "modules/marketplace";
+import { DamacCavalli1, DamacCavalli2, DamacCavalli3, DamacCavalli4 } from "assets/images";
+
 // Stellar
 
 const API_STELLAR_EXPERT = process.env.REACT_APP_API_STELLAR_EXPERT
@@ -40,21 +40,20 @@ const useMarketPlace = () => {
         if (item.asset.startsWith("T001")) {
           return {
             ...item,
-            name: "Cavalli Apartment",
+            name: "Cavalli Apartment 1",
             location: "Dubai",
             images:
-              [
-                "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
-                "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
-                "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
-                "https://dubai-luxury.property/uploads/images/2021-08/36397ed90c409fbf3443407418241568.jpg"
-                
-              ],
+                [
+                  DamacCavalli1,
+                  DamacCavalli2,
+                  DamacCavalli3,
+                  DamacCavalli4
+                ],
             total_assets_available: "1000",
             bedrooms: 1,
             bathrooms: 1,
             area: 86,
-            yearBuilt: 2024
+            yearBuilt: 2025
           };
         } // else if (item.asset.startsWith("T002")) {
           // return {

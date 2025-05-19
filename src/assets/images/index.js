@@ -11,6 +11,10 @@ import HSSLogo from "./oracles/hss.png";
 import RemaxLogo from "./oracles/remax.png";
 import Tether from "./tether.png";
 import BmMap from "./bm_map.png";
+import DamacCavalli1 from "./damac_cavalli/Damac_Cavalli_Image_1.jpg"
+import DamacCavalli2 from "./damac_cavalli/Damac_Cavalli_Image_2.jpg"
+import DamacCavalli3 from "./damac_cavalli/Damac_Cavalli_Image_3.jpg"
+import DamacCavalli4 from "./damac_cavalli/Damac_Cavalli_Image_4.jpg"
 
 export {
   rocPurpleLogo,
@@ -26,4 +30,8 @@ export {
   RemaxLogo,
   Tether,
   BmMap,
+  DamacCavalli1,
+  DamacCavalli2,
+  DamacCavalli3,
+  DamacCavalli4
 };

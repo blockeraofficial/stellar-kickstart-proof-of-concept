@@ -15,7 +15,7 @@ if (typeof window !== "undefined") {
 
 const RPC_URL = process.env.REACT_APP_STELLAR_TESTNET_RPC_URL;
 
-const DashboardPage = ({ publicKey, connectWallet }) => {
+const DashboardPage = ({ publicKey }) => {
   const [tokenizedAssets, setTokenizedAssets] = useState([]);
   const [tokenizedAssetCount, setTokenizedAssetCount] = useState("0");
   const [testnetXLM, setTestnetXLM] = useState("0");
@@ -54,7 +54,7 @@ return (
       isError={isError}
       errorMessage={"Error loading, please try again later"}
     >
-
+     
       <div className="space-y-4 p-1 pb-10">
         <div className="flex justify-center md:justify-between items-center">
           <Title className={"py-3"}>{`DASHBOARD`}</Title>
@@ -88,8 +88,15 @@ return (
           </div>
         </ConfigurationWrapper>
       </div>
+
     </LoadingContainer>
-  )
+
+
+
+
+  
+      
+    )
 };
 
 export default DashboardPage;
