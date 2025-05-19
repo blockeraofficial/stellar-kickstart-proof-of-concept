@@ -70,7 +70,7 @@ const SaleTimer = ({ endDate, variant = "primary" }) => {
               ? "text-rocPurple-700"
               : "text-rocPurple-800"
           }`}
-        >{`Sale ends in:`}</h6>
+        >{`SALE ENDS:`}</h6>
       </div>
       <h6
         className={`text-xl font-bold whitespace-nowrap font-manrope ${

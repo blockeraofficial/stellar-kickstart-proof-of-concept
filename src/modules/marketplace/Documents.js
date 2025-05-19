@@ -1,12 +1,18 @@
 import { Title } from "components";
 
 const ASSET_CONTRACT_ADDRESS = process.env.REACT_APP_ASSET_CONTRACT_ADDRESS;
+const STELLAR_ASSET_CONTRACT_MANAGER_PUBLIC_KEY = process.env.REACT_APP_STELLAR_ASSET_CONTRACT_MANAGER_PUBLIC_KEY
 
 const documents = [
   {
     id: 1,
     name: "Stellar Asset Contract",
     url: `https://stellar.expert/explorer/testnet/contract/${ASSET_CONTRACT_ADDRESS}`,
+  },
+  {
+    id: 2,
+    name: "Stellar Asset Manager Contract",
+    url: `https://stellar.expert/explorer/testnet/contract/${STELLAR_ASSET_CONTRACT_MANAGER_PUBLIC_KEY}`,
   },
 ];
 
