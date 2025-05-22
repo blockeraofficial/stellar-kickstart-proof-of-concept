@@ -11,7 +11,7 @@ const Navbar = ({toggle, connectWallet, connectedWalletPublicKey}) => {
       <div className="hidden lg:flex space-x-2 items-center ml-3">
         <Excalamation />
         <h6 className="font-semibold text-rocBlack-100 font-manrope">
-          Welcome to the Realty on Chain POC for Stellar Blockchain
+          Welcome to the Realty on Chain Beta on Stellar Testnet
         </h6>
       </div>
       <NavLink to={"/"} className={"block lg:hidden pl-2"}>
