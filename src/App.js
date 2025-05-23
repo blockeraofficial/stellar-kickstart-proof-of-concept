@@ -4,7 +4,7 @@ import { Routes, Route, HashRouter } from "react-router-dom";
 
 import ModelPage from "./pages/Model";
 import FAQPage from "./pages/FAQ";
-import StakingPage from "./pages/Staking";
+// import StakingPage from "./pages/Staking";
 import OraclesPage from "./pages/Oracles";
 import PartnersPage from "./pages/Partners";
 import DashboardPage from "./pages/Portfolio";
@@ -15,8 +15,6 @@ import MarketPlaceDetailPage from "./pages/MarketPlaceDetail";
 import HomeLayout from "components/HomeLayout";
 import PrivacyPolicy from "pages/PrivacyPolicy";
 import TermsOfService from "pages/TermsAndService";
-
-import "wallet-connect-config";
 
 const App = () => {
 
@@ -37,13 +35,15 @@ const App = () => {
               />
             } 
           />
+          {/*
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/staking" element={<StakingPage />} />
           <Route path="/oracles" element={<OraclesPage />} />
-          <Route path="/providers" element={<PartnersPage />} />
           <Route path="/model" element={<ModelPage />} />
-          <Route path="/faq" element={<FAQPage />} />
           <Route path="/auction" element={<AuctionPage />} />
+          */}
+          <Route path="/providers" element={<PartnersPage />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route path="/property/:id" element=
             {
               <MarketPlaceDetailPage
