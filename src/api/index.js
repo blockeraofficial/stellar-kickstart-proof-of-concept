@@ -1,3 +1,4 @@
+/*
 import axios from "axios";
 
 // BACKEND CALLS
@@ -43,3 +44,4 @@ const getProperties = async () => {
 };
 
 export { API, getProperties, getTokenPrices };
+*/

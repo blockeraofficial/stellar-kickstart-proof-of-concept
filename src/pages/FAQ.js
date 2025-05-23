@@ -31,7 +31,7 @@ const GENERAL_TAGS = [
     id: 5,
     name: "Watch demo video",
     SVG: () => <WatchDemoVideo width={60} height = {60} />,
-    tag: "https://www.youtube.com/@blockera_online"
+    tag: "https://www.youtube.com/watch?v=EIZooSwDFho&ab_channel=Blockera"
   },
   {
     id: 6,

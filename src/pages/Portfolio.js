@@ -9,9 +9,7 @@ import { Properties } from "modules/dashboard";
 import { Verified } from "assets/svgs";
 import FetchAssets from "modules/dashboard/FetchAssets";
 
-if (typeof window !== "undefined") {
-  window.Buffer = Buffer;
-}
+
 
 const RPC_URL = process.env.REACT_APP_STELLAR_TESTNET_RPC_URL;
 
@@ -45,8 +43,6 @@ const DashboardPage = ({ publicKey }) => {
     };
     loadAssets();
   }, [publicKey]);
-
-
 
 return (
     <LoadingContainer
@@ -87,11 +83,6 @@ return (
       </div>
 
     </LoadingContainer>
-
-
-
-
-  
       
     )
 };
