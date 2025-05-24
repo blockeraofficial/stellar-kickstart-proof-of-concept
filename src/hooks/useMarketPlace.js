@@ -28,8 +28,8 @@ const useMarketPlace = () => {
         location: "Dubai",
         media: "",
         collected: (
-          ((1000 * Math.pow(10,7) - item?.balance ) / Math.pow(10,8))
-        ),
+          ((10000 * Math.pow(10,7) - item?.balance ) / Math.pow(10,7))
+        ) / 100,
         price: Math.pow(10,6),
       }));
 
@@ -49,7 +49,7 @@ const useMarketPlace = () => {
                   DamacCavalli3,
                   DamacCavalli4
                 ],
-            total_assets_available: "1000",
+            total_assets_available: "10000",
             bedrooms: 1,
             bathrooms: 1,
             area: 86,
