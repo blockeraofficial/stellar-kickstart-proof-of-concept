@@ -2,6 +2,7 @@
   "name": "roc-front-end",
   "version": "0.1.0",
   "dependencies": {
+    "@creit.tech/stellar-wallets-kit": "^1.7.3",
     "@react-google-maps/api": "^2.19.2",
     "@stellar/stellar-sdk": "^13.3.0",
     "@testing-library/jest-dom": "^5.17.0",
