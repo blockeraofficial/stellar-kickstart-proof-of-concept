@@ -7,28 +7,44 @@ const Properties = ({ accountNfts }) => {
 
   // For POC, keep 1 tokenized assets
 
-  const enrichedAssets = accountNfts.slice(0,1).map((item) => {
-    if (item.asset_code === "T001") {
-      return {
-        ...item,
-        asset_name: "Cavalli Apartment",
-        asset_location: "Dubai",
-        asset_image_link: "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
-        total_assets_available: "1000",
-      };
-    } // else if (item.asset_code === "T002") {
-      // return {
-      //   ...item,
-      //   asset_name: "Aykon City Tower B",
-      //   asset_location: "Dubai",
-      //   asset_image_link: "https://ipfs.io/ipfs/QmS8sW4sH1wMqkfPZHHMoFni4BKu82e5riVibQh6JB5GZB",
-      //   total_assets_available: "2000",
-      // };
-    // } 
-    else  {
-      return item; 
-    }
-  });
+  console.log("accountNfts:", accountNfts)
+
+  // const enrichedAssets = accountNfts.slice(0,1).map((item) => {
+  //   if (item.asset_code === "T001" && item.asset_issuer=== "GBBMT2OIPVZKBWTCVXATGZ25RPFRU6EBPC4PIOXLEYR5W3GCNVRYIOAX") {
+  //     return {
+  //       ...item,
+  //       asset_name: "Cavalli Apartment 1",
+  //       asset_location: "Dubai",
+  //       asset_image_link: "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
+  //       total_assets_available: "10000",
+  //     };
+  //   } // else if (item.asset_code === "T002") {
+  //     // return {
+  //     //   ...item,
+  //     //   asset_name: "Aykon City Tower B",
+  //     //   asset_location: "Dubai",
+  //     //   asset_image_link: "https://ipfs.io/ipfs/QmS8sW4sH1wMqkfPZHHMoFni4BKu82e5riVibQh6JB5GZB",
+  //     //   total_assets_available: "2000",
+  //     // };
+  //   // } 
+  //   else  {
+  //     return item; 
+  //   }
+  // });
+
+  const enrichedAssets = accountNfts
+  .filter(
+    (item) =>
+      item.asset_code === "T001" &&
+      item.asset_issuer === "GBBMT2OIPVZKBWTCVXATGZ25RPFRU6EBPC4PIOXLEYR5W3GCNVRYIOAX"
+  )
+  .map((item) => ({
+    ...item,
+    asset_name: "Cavalli Apartment 1",
+    asset_location: "Dubai",
+    asset_image_link: "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
+    total_assets_available: "10000",
+  }));
 
   const onClickClaim = () => {};
 
@@ -96,7 +112,7 @@ const Properties = ({ accountNfts }) => {
                   </h6>
                   <h6 className="w-2/12 px-4 py-6 text-center font-bold border-r-4 border-rocWhite-300 font-manrope">
                     {Number(item.balance)} (%
-                    {((Number(item.balance) / Number(item.total_assets_available)) * 100).toFixed(1)})
+                    {((Number(item.balance) / Number(item.total_assets_available)) * 100).toFixed(2)})
                   </h6>
                   <h6 className="w-2/12 px-4 py-6 text-center font-bold border-r-4 border-rocWhite-300 font-manrope">
                     {Number(item.total_assets_available)}
