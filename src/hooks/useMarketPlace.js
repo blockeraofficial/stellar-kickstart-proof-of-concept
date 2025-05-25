@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 // Stellar
 import { FetchStellarContractAssets } from "modules/marketplace";
+import { getStellarContractAssets } from "api"; // Backend Call
 import { DamacCavalli1, DamacCavalli2, DamacCavalli3, DamacCavalli4 } from "assets/images";
 
 // Stellar
@@ -18,8 +19,11 @@ const useMarketPlace = () => {
   const FetchStellarContractAllAssets = async () => {
     setLoading(true);
     try {
+      
       // Stellar
-      const stellarContractAssetsFetched = await FetchStellarContractAssets(API_STELLAR_EXPERT)
+      const fetchStellarAssets = await FetchStellarContractAssets(API_STELLAR_EXPERT)
+      const stellarContractAssetsFetched = fetchStellarAssets.result
+
       // Stellar
 
       const stellarContractAllTokens = stellarContractAssetsFetched?.map((item, index) => ({

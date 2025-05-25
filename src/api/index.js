@@ -1,11 +1,11 @@
-/*
+
 import axios from "axios";
 
 // BACKEND CALLS
 
 const API = axios.create({
   // baseURL: "http://localhost:4000/api",
-  baseURL: "https://realty-on-chain-backend.onrender.com/api",
+  baseURL: "https://stellar-kickstart-backend.onrender.com/api",
 });
 
 const ResponseInterceptor = (response) => {
@@ -43,5 +43,10 @@ const getProperties = async () => {
   return properties;
 };
 
-export { API, getProperties, getTokenPrices };
-*/
+const getStellarContractAssets = async () => {
+  const assets = await API.get("/contract-assets")
+  return assets;
+}
+
+export { API, getProperties, getTokenPrices, getStellarContractAssets };
+
