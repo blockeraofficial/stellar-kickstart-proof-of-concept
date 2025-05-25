@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useMarketPlace } from "hooks";
 import { DamacCavalli1, DamacCavalli2, DamacCavalli3, DamacCavalli4 } from "assets/images";
 
+
 const { Title } = require("components");
 
 /* Damac Cavalli 1 (First Asset) Picture Links
@@ -21,6 +22,9 @@ const MarketplacePage = () => {
   const [filter, setFilter] = useState("all");
   const onChangeFilter = (filter) => setFilter(filter);
   const navigator = useNavigate();
+
+
+
 
   return (
     <LoadingContainer
