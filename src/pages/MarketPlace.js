@@ -9,7 +9,8 @@ import { DamacCavalli1, DamacCavalli2, DamacCavalli3, DamacCavalli4 } from "asse
 
 const { Title } = require("components");
 
-/* Damac Cavalli 1 (First Asset) Picture Links
+/* 
+  Damac Cavalli 1 (First Asset) Picture Links
   "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
   "https://rangewebsite2023.s3.ap-south-1.amazonaws.com/projects/2453/DAMAC-Cavalli-Tower-Exteriors-5-%281%29.jpg",
   "https://i.ytimg.com/vi/8NrH14M3zdk/maxresdefault.jpg",
@@ -22,9 +23,6 @@ const MarketplacePage = () => {
   const [filter, setFilter] = useState("all");
   const onChangeFilter = (filter) => setFilter(filter);
   const navigator = useNavigate();
-
-
-
 
   return (
     <LoadingContainer
