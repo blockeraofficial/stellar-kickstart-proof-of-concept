@@ -1,5 +1,6 @@
 import { LocationPointer, Home } from "assets/svgs";
 import { Title } from "components";
+import { DamacCavalli1 } from "assets/images";
 
 const Properties = ({ accountNfts }) => {
   
@@ -42,7 +43,7 @@ const Properties = ({ accountNfts }) => {
     ...item,
     asset_name: "Cavalli Apartment 1",
     asset_location: "Dubai",
-    asset_image_link: "https://mma.prnasia.com/media2/1629472/DAMAC_Properties.jpg?p=publish",
+    asset_image_link: DamacCavalli1,
     total_assets_available: "10000",
   }));
 
@@ -93,7 +94,7 @@ const Properties = ({ accountNfts }) => {
                 >
                   <h6 className="w-3/12 h-20 relative">
                     <img
-                      src={`${item.asset_image_link}`}
+                      src={item.asset_image_link}
                       className="w-full h-full rounded-l-2xl object-cover"
                       alt="house"
                     />
