@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+import toast from 'react-hot-toast';
+
 import { DollarStatusIcon } from "assets/svgs";
 import { EstablishTrustline, BuyRealtyToken } from "modules/marketplace";
 
@@ -22,28 +25,69 @@ const BuyPropertyCard = ({
 
   // Load trustline status from localStorage when publicKey changes
   useEffect(() => {
-    if (publicKey) {
-      const storedTrust = localStorage.getItem(`trustline_${publicKey}`);
-      if (storedTrust) {
+    const checkTrustlineStatus = async () => {
+      if (!publicKey) return;
+
+      const localTrust = localStorage.getItem(`trustline_${publicKey}`);
+      let trustFromLocal = null;
+
+      if (localTrust) {
         try {
-          const parsed = JSON.parse(storedTrust);
-          setTrustlineStatus(parsed);
+          trustFromLocal = JSON.parse(localTrust);
+          setTrustlineStatus(trustFromLocal); // Quick UI update from local
         } catch {
           console.warn("Corrupt trustline data in localStorage");
         }
       }
-    }
+
+      try {
+        const accountResponse = await axios.get(`${RPC_URL}/accounts/${publicKey}`);
+        const balances = accountResponse.data.balances;
+        const isTrustedOnChain = balances.some(
+          (balance) =>
+            balance.asset_code === ASSET_CODE &&
+            balance.asset_issuer === ASSET_ISSUER
+        );
+
+        // Only update localStorage if it changed
+        if (!trustFromLocal || trustFromLocal.isTrusted !== isTrustedOnChain) {
+          const updatedStatus = {
+            accountInfo: accountResponse.data,
+            isTrusted: isTrustedOnChain,
+          };
+          setTrustlineStatus(updatedStatus);
+          localStorage.setItem(`trustline_${publicKey}`, JSON.stringify(updatedStatus));
+        }
+      } catch (err) {
+        console.warn("Couldn't verify trustline from chain:", err);
+      }
+    };
+
+    checkTrustlineStatus();
   }, [publicKey]);
 
   const EstablishTrustlineHandler = async () => {
     try {
       const result = await EstablishTrustline(RPC_URL, ASSET_CODE, ASSET_ISSUER, publicKey, kit);
+
+      // 🧠 Double-check from Stellar account data whether trustline was actually added
+      const verifyResponse = await axios.get(`${RPC_URL}/accounts/${publicKey}`);
+      const balances = verifyResponse.data.balances;
+      const trustExists = balances.some(
+        (balance) =>
+          balance.asset_code === ASSET_CODE && balance.asset_issuer === ASSET_ISSUER
+      );
+
       const updatedStatus = {
         accountInfo: result,
-        isTrusted: true
+        isTrusted: trustExists,
       };
       setTrustlineStatus(updatedStatus);
       localStorage.setItem(`trustline_${publicKey}`, JSON.stringify(updatedStatus));
+
+      if (trustExists) {
+        toast.success('Trustline established successfully!');
+      }
     } catch (error) {
       console.error("Failed to establish trustline", error);
       setTrustlineStatus((prev) => ({
@@ -54,6 +98,7 @@ const BuyPropertyCard = ({
         ...trustlineStatus,
         isTrusted: false
       }));
+      toast.error('Failed to establish trustline.');
     }
   };
 
@@ -66,6 +111,9 @@ const BuyPropertyCard = ({
       publicKey,
       kit
     );
+
+    setPropertyToken(""); // Clear the input after submission
+    toast.success("Realty token purchase request submitted!");
   };
 
   return (
@@ -95,7 +143,9 @@ const BuyPropertyCard = ({
               value={propertyToken}
               onChange={(e) => {
                 const value = e.target.value;
-                if (value === "" || Number(value) > 0) {
+              
+                // Allow empty input or a number between 1 and 10
+                if (value === "" || (Number(value) > 0 && Number(value) <= 10)) {
                   setPropertyToken(value);
                 }
               }}
@@ -106,6 +156,7 @@ const BuyPropertyCard = ({
               }}
               type="number"
               min="1"
+              max="10" // HTML max attribute for UI hint
               disabled={!trustlineStatus.isTrusted}
               className={`w-full p-4 rounded-xl border-2 ${
                 !trustlineStatus.isTrusted
@@ -113,7 +164,7 @@ const BuyPropertyCard = ({
                   : "border-rocPurple-300 text-rocPurple-300"
               } focus:outline-none focus:border-rocPurple-300 font-manrope`}
               placeholder={
-                !trustlineStatus.isTrusted ? "Build trustline first" : "ENTER TOKEN AMOUNT"
+                !trustlineStatus.isTrusted ? "Build trustline first" : "ENTER TOKEN AMOUNT (MAX 10)"
               }
             />
           </div>

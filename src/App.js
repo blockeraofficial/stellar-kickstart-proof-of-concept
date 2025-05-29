@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 import { Routes, Route, HashRouter } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 
 import ModelPage from "./pages/Model";
 import FAQPage from "./pages/FAQ";
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <HashRouter>
+      <Toaster position="top-right" reverseOrder={false} />
       <HomeLayout onConnect={setWalletInfo}>
         <Routes>
           <Route path="/" element={<MarketPlacePage/>} />

@@ -36,6 +36,7 @@ const Properties = ({ accountNfts }) => {
   const enrichedAssets = accountNfts
   .filter(
     (item) =>
+      parseFloat(item?.balance) > 0 &&
       item.asset_code === "T001" &&
       item.asset_issuer === "GBBMT2OIPVZKBWTCVXATGZ25RPFRU6EBPC4PIOXLEYR5W3GCNVRYIOAX"
   )
@@ -46,6 +47,8 @@ const Properties = ({ accountNfts }) => {
     asset_image_link: DamacCavalli1,
     total_assets_available: "10000",
   }));
+
+  console.log("enrichedAssets", enrichedAssets)
 
   const onClickClaim = () => {};
 
