@@ -33,20 +33,17 @@ API.interceptors.response.use(ResponseInterceptor, (error) => {
   }
 });
 
-const getTokenPrices = async () => {
-  const tokenPrices = await API.get("/token-prices");
-  return tokenPrices;
-};
-
-const getProperties = async () => {
-  const properties = await API.get("/properties");
-  return properties;
-};
-
 const getStellarContractAssets = async () => {
   const assets = await API.get("/contract-assets")
   return assets;
 }
 
-export { API, getProperties, getTokenPrices, getStellarContractAssets };
+// Do it later
+
+// const buildTrustline = async () => {
+//   const trustlineResponse = await API.get("/build-trustline")
+//   return trustlineResponse;
+// }
+
+export { API, getStellarContractAssets };
 

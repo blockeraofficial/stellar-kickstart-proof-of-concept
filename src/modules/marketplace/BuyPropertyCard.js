@@ -16,6 +16,7 @@ const BuyPropertyCard = ({
     accountInfo: null,
     isTrusted: false
   });
+  const [inputError, setInputError] = useState("");
 
   const RPC_URL = process.env.REACT_APP_STELLAR_TESTNET_RPC_URL;
   const ASSET_CODE = process.env.REACT_APP_ASSET_CODE;
@@ -23,7 +24,6 @@ const BuyPropertyCard = ({
   const CONTRACT_PUBLIC_KEY = process.env.REACT_APP_STELLAR_ASSET_CONTRACT_MANAGER_PUBLIC_KEY;
   const ASSET_CONTRACT_ADDRESS = process.env.REACT_APP_ASSET_CONTRACT_ADDRESS;
 
-  // Load trustline status from localStorage when publicKey changes
   useEffect(() => {
     const checkTrustlineStatus = async () => {
       if (!publicKey) return;
@@ -34,7 +34,7 @@ const BuyPropertyCard = ({
       if (localTrust) {
         try {
           trustFromLocal = JSON.parse(localTrust);
-          setTrustlineStatus(trustFromLocal); // Quick UI update from local
+          setTrustlineStatus(trustFromLocal);
         } catch {
           console.warn("Corrupt trustline data in localStorage");
         }
@@ -49,7 +49,6 @@ const BuyPropertyCard = ({
             balance.asset_issuer === ASSET_ISSUER
         );
 
-        // Only update localStorage if it changed
         if (!trustFromLocal || trustFromLocal.isTrusted !== isTrustedOnChain) {
           const updatedStatus = {
             accountInfo: accountResponse.data,
@@ -70,7 +69,6 @@ const BuyPropertyCard = ({
     try {
       const result = await EstablishTrustline(RPC_URL, ASSET_CODE, ASSET_ISSUER, publicKey, kit);
 
-      // 🧠 Double-check from Stellar account data whether trustline was actually added
       const verifyResponse = await axios.get(`${RPC_URL}/accounts/${publicKey}`);
       const balances = verifyResponse.data.balances;
       const trustExists = balances.some(
@@ -103,6 +101,17 @@ const BuyPropertyCard = ({
   };
 
   const BuyRealtyTokenHandler = async () => {
+    if (!propertyToken || Number(propertyToken) <= 0) {
+      setInputError("Please enter a valid token amount.");
+    
+      // Automatically clear the error after 5 seconds
+      setTimeout(() => setInputError(""), 5000);
+    
+      return;
+    }
+  
+    setInputError("");
+  
     await BuyRealtyToken(
       RPC_URL,
       CONTRACT_PUBLIC_KEY,
@@ -111,8 +120,8 @@ const BuyPropertyCard = ({
       publicKey,
       kit
     );
-
-    setPropertyToken(""); // Clear the input after submission
+  
+    setPropertyToken("");
     toast.success("Realty token purchase request submitted!");
   };
 
@@ -137,16 +146,16 @@ const BuyPropertyCard = ({
             </h6>
           </div>
         </div>
+
         <div className="flex justify-center">
           <div className="relative rounded-xl overflow-hidden w-full md:max-w-[880px]">
             <input
               value={propertyToken}
               onChange={(e) => {
                 const value = e.target.value;
-              
-                // Allow empty input or a number between 1 and 10
                 if (value === "" || (Number(value) > 0 && Number(value) <= 10)) {
                   setPropertyToken(value);
+                  setInputError("");
                 }
               }}
               onKeyDown={(e) => {
@@ -156,7 +165,7 @@ const BuyPropertyCard = ({
               }}
               type="number"
               min="1"
-              max="10" // HTML max attribute for UI hint
+              max="10"
               disabled={!trustlineStatus.isTrusted}
               className={`w-full p-4 rounded-xl border-2 ${
                 !trustlineStatus.isTrusted
@@ -167,6 +176,9 @@ const BuyPropertyCard = ({
                 !trustlineStatus.isTrusted ? "Build trustline first" : "ENTER TOKEN AMOUNT (MAX 10)"
               }
             />
+            {inputError && (
+              <p className="text-red-600 text-sm text-center mt-1">{inputError}</p>
+            )}
           </div>
         </div>
 
