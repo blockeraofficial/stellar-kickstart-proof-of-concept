@@ -17,9 +17,9 @@ const GENERAL_TAGS = [
   },
   {
     id: 3,
-    name: "Company Structure",
+    name: "Linktree",
     SVG: () => <Staking width={60} height = {60} />,
-    tag: "https://medium.com/@blockera_online/blockera-using-creative-solutions-to-drive-the-web3-revolution-0d6bf8b2b282"
+    tag: "https://linktr.ee/blockera"
   },
   {
     id: 4,

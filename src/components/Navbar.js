@@ -11,7 +11,17 @@ const Navbar = ({toggle, connectWallet, connectedWalletPublicKey}) => {
       <div className="hidden lg:flex space-x-2 items-center ml-3">
         <Excalamation />
         <h6 className="font-semibold text-rocBlack-100 font-manrope">
-          Welcome to the Realty on Chain Beta on Stellar Testnet
+          Welcome to the Realty on Chain Beta on Stellar Testnet. Start{" "}
+          <a
+          href="https://medium.com/@blockera_online/buy-your-first-realty-token-on-roc-beta-stellar-testnet-guide-ce11f3117566"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline hover:text-blue-800"
+          >
+          here 
+          </a>
+          {" "}
+          with this quick guide.
         </h6>
       </div>
       <NavLink to={"/"} className={"block lg:hidden pl-2"}>
