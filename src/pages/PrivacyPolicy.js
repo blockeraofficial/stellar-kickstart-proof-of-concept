@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       </div>
       <div className="rounded-2xl bg-rocWhite-300 p-4 space-y-4 font-manrope">
         <h2 className="font-bold text-2xl text-rocPurple-800">1. Introduction</h2>
-        <p>Welcome to Realty on Chain (ROC), operated by Web3 Corporation LTD (Blockera), a company registered in London, United Kingdom ("Realty on Chain" or "we"). This Privacy Policy ("Policy") explains how we collect, use, and disclose your personal information when you access and use our platform, including the websites located at www.rocplatform.online (the "Platform").</p>
+        <p>Welcome to Realty on Chain (ROC), operated by Blocker Corp, a company registered in USA, Wyoming ("Realty on Chain" or "we"). This Privacy Policy ("Policy") explains how we collect, use, and disclose your personal information when you access and use our platform, including the websites located at www.realtyonchain.online (the "Platform").</p>
         <h2 className="font-bold text-2xl text-rocPurple-800">2. Information We Collect</h2>
         <br></br>
         <strong>When you access and use the Platform, we may collect the following information from you:</strong>

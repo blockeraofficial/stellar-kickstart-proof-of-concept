@@ -3,7 +3,7 @@ const termsOfService = [
     id: 1,
     title: "1. Introduction",
     content:
-      'Welcome to Realty on Chain (ROC), operated by Blockera (Web3 Corporation LTD), a company registered in London, United Kingdom. These Terms of Service ("Terms") govern your access to and use of the Realty on Chain (ROC) platform, including the website located at www.rocplatform.online (the "Platform").',
+      'Welcome to Realty on Chain (ROC), operated by Blockera Corp, a company registered in USA, Wyoming. These Terms of Service ("Terms") govern your access to and use of the Realty on Chain (ROC) platform, including the website located at www.realtyonchain.online (the "Platform").',
   },
   {
     id: 2,
