@@ -65,7 +65,7 @@ const termsOfService = [
     id: 10,
     title: "10. Governing Law and Jurisdiction",
     content:
-      "These Terms shall be governed by and construed in accordance with the laws of England and Wales, without regard to its conflict of laws principles. You agree to submit to the exclusive jurisdiction of the courts of England and Wales for any dispute arising out of or relating to these Terms.",
+      "These Terms shall be governed by and construed in accordance with the laws of USA and Wyoming, without regard to its conflict of laws principles. You agree to submit to the exclusive jurisdiction of the courts of USA and Wyoming for any dispute arising out of or relating to these Terms.",
   },
   {
     id: 11,
