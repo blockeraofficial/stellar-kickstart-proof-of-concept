@@ -41,9 +41,9 @@ const App = () => {
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/staking" element={<StakingPage />} />
           <Route path="/oracles" element={<OraclesPage />} />
-          <Route path="/model" element={<ModelPage />} />
           <Route path="/auction" element={<AuctionPage />} />
           */}
+          <Route path="/compliance" element={<ModelPage />} />
           <Route path="/providers" element={<PartnersPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/property/:id" element=
