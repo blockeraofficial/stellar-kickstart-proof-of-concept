@@ -38,7 +38,7 @@ const Properties = ({ accountNfts }) => {
     (item) =>
       parseFloat(item?.balance) > 0 &&
       item.asset_code === "T001" &&
-      item.asset_issuer === "GBBMT2OIPVZKBWTCVXATGZ25RPFRU6EBPC4PIOXLEYR5W3GCNVRYIOAX"
+      item.asset_issuer === "GDUO3WZRCZ5XWJBKKX5CRW6I6QBE4UDXOIJCCNVPSA6P4TQ2WF3KZWWU"
   )
   .map((item) => ({
     ...item,
