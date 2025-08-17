@@ -2,6 +2,8 @@ import { LocationPointer, Home } from "assets/svgs";
 import { Title } from "components";
 import { DamacCavalli1 } from "assets/images";
 
+const assetIssuer = process.env.REACT_APP_ASSET_ISSUER
+
 const Properties = ({ accountNfts }) => {
   
   // Necessary step to add front-end features on the tokens
@@ -38,7 +40,7 @@ const Properties = ({ accountNfts }) => {
     (item) =>
       parseFloat(item?.balance) > 0 &&
       item.asset_code === "T001" &&
-      item.asset_issuer === "GDUO3WZRCZ5XWJBKKX5CRW6I6QBE4UDXOIJCCNVPSA6P4TQ2WF3KZWWU"
+      item.asset_issuer === assetIssuer.toString()
   )
   .map((item) => ({
     ...item,
